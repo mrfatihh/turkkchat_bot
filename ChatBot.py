@@ -255,7 +255,7 @@ def echo(call):
 def recovery_data():
     print("🔄 Recovery başlatıldı... (şimdilik sadece test için çalışıyor)")
 
-if name == "main":
+if __name__ == "__main__":
     recovery_data()
     # bot.stop_polling()  # Gerekli değilse bunu silebilirsin
     bot.polling(none_stop=True)
