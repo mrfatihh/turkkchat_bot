@@ -252,7 +252,10 @@ def echo(call):
         bot.send_message(user_to_id, m_is_connect, reply_markup=keyboard)
 
 
-if __name__ == "__main__":
+def recovery_data():
+    print("🔄 Recovery başlatıldı... (şimdilik sadece test için çalışıyor)")
+
+if name == "main":
     recovery_data()
-    bot.stop_polling()
+    # bot.stop_polling()  # Gerekli değilse bunu silebilirsin
     bot.polling(none_stop=True)
