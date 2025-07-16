@@ -1,6 +1,9 @@
 import os
 import telebot
 
+like_str = "1"
+dislike_str = "2"
+
 # Bot tokenını ortam değişkeninden alıyoruz
 TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
