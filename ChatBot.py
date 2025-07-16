@@ -6,6 +6,9 @@ assert access_token is not None, "❌ BOT_TOKEN eksik!"
 
 bot = telebot.TeleBot(access_token)
 
+like_str = "1"
+disslike_str = "2"
+
 def inline_menu():
     """
     Create inline menu for new chat
