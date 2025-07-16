@@ -98,6 +98,6 @@ def echo(call):
 def recovery_data():
     print("🔄 Recovery başlatıldı... (şimdilik sadece test için çalışıyor)")
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     recovery_data()
     bot.polling(none_stop=True)
