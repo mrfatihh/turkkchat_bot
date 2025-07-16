@@ -1,13 +1,10 @@
+import os
 import telebot
-from telebot import types
 
-from config import CHANNEL, GROUP, OWNER, TOKEN
-from dataEgine import *
-from Messages import *
+access_token = os.getenv("BOT_TOKEN")
+assert access_token is not None, "❌ BOT_TOKEN eksik!"
 
-access_token = TOKEN
 bot = telebot.TeleBot(access_token)
-
 
 def inline_menu():
     """
