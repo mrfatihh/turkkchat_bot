@@ -1,20 +1,23 @@
-import telebot
 import os
+import telebot
 
-# Token, mesajlar, butonlar vs. varsa onları burada tanımla
+# Bot tokenını ortam değişkeninden alıyoruz
+TOKEN = os.getenv("BOT_TOKEN")
+bot = telebot.TeleBot(TOKEN)
 
-communications = {}  # Kullanıcı eşleştirme verisi burada tutulur
+# Kullanıcılar arası iletişim eşleşmesini tutan global sözlük
+communications = {}
 
 # Kullanıcı eşleştirme fonksiyonu
 def add_communications(user1, user2):
     communications[user1] = {"UserTo": user2}
     communications[user2] = {"UserTo": user1}
 
-# Kullanıcıyı bağlayıp bağlamadığını kontrol eden fonksiyon (örnek)
+# Kullanıcının eşleşip eşleşmediğini kontrol eder
 def connect_user(user_id):
     return user_id in communications and "UserTo" in communications[user_id]
 
-# Mesaj türlerine göre yönlendirme
+# Mesaj işleme fonksiyonu
 @bot.message_handler(content_types=["text", "sticker", "photo", "audio", "video", "voice"])
 def handle_messages(message):
     user_id = message.from_user.id
@@ -60,7 +63,7 @@ def handle_messages(message):
             else:
                 bot.send_message(user_id, m_send_some_messages)
 
-# Kullanıcıları eşleştiren callback
+# Callback sorgu işleyici
 @bot.callback_query_handler(func=lambda call: True)
 def echo(call):
     if call.data == "NewChat":
@@ -92,11 +95,9 @@ def echo(call):
         bot.send_message(user_id, m_is_connect, reply_markup=keyboard)
         bot.send_message(user_to_id, m_is_connect, reply_markup=keyboard)
 
-# Test için recovery
 def recovery_data():
     print("🔄 Recovery başlatıldı... (şimdilik sadece test için çalışıyor)")
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     recovery_data()
-    # bot.stop_polling()  # Gerekli değilse bunu silebilirsin
     bot.polling(none_stop=True)
