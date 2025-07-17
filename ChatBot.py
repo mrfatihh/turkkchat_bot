@@ -5,7 +5,7 @@ from config import CHANNEL, GROUP, OWNER, TOKEN
 from dataEgine import *
 from Messages import *
 
-access_token = "8028820851:AAFKml701OfM4Adao5oN_Jqkn5gKqOL9ikc"
+access_token = ""
 bot = telebot.TeleBot(access_token)
 
 
